@@ -1,0 +1,22 @@
+//Part_2 / Exp_1
+
+->  What are the ARP packets and what are they used for?
+ARP significa Address Resolution Protocol, é um protocolo usado por dispositivos de rede para mapear um endereço IP para o 
+endereço MAC correspondente. Os pacotes ARP são usados em redes Ethernet e são essenciais para que os dispositivos comuniquem
+entre si na mesma rede. Sem o protocolo ARP os dispositivos não conseguiriam comunicar entre si na mesma rede.
+
+->  What are the MAC and IP addresses of ARP packets and why?
+Os pacotes ARP contêm endereços MAC e endereços IP. O endereço MAC de origem num pacote ARP é o endereço MAC do dispositivo
+que enviou o pacote, enquanto o endereço MAC de destino é o endereço de broadcast para a rede. O endereço IP de origem num
+pacote ARP é o endereço IP do dispositivo que enviou o pacote, enquanto o endereço IP de destino é o endereço IP do dispositivo
+para o qual o remetente está a tentar resolver o endereço MAC.
+
+->  What packets does the ping command generate?
+ICMP echo request
+ICMP echo reply
+Quando um dispositivo envia um ICMP echo request packet para o dispositivo de destino este envia um ICMP echo reply para indicar
+que o pedido foi recebido.
+
+->  What are the MAC and IP addresses of the ping packets?
+Os pacotes de ping não possuem endereços MAC específicos, porque são enviados através da camada de rede usando endereço IP de
+destino. 

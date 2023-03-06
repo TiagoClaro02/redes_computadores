@@ -1,22 +1,28 @@
 //Part_2 / Exp_1
 
 ->  What are the ARP packets and what are they used for?
-ARP significa Address Resolution Protocol, é um protocolo usado por dispositivos de rede para mapear um endereço IP para o 
-endereço MAC correspondente. Os pacotes ARP são usados em redes Ethernet e são essenciais para que os dispositivos comuniquem
-entre si na mesma rede. Sem o protocolo ARP os dispositivos não conseguiriam comunicar entre si na mesma rede.
+ARP significa Address Resolution Protocol, é um protocolo usado por dispositivos de rede para mapear um endereço IP para o endereço MAC correspondente. Os pacotes ARP são usados em redes Ethernet e são essenciais para que os dispositivos comuniquem entre si na mesma rede. Sem o protocolo ARP os dispositivos não conseguiriam comunicar entre si na mesma rede.
 
 ->  What are the MAC and IP addresses of ARP packets and why?
-Os pacotes ARP contêm endereços MAC e endereços IP. O endereço MAC de origem num pacote ARP é o endereço MAC do dispositivo
-que enviou o pacote, enquanto o endereço MAC de destino é o endereço de broadcast para a rede. O endereço IP de origem num
-pacote ARP é o endereço IP do dispositivo que enviou o pacote, enquanto o endereço IP de destino é o endereço IP do dispositivo
-para o qual o remetente está a tentar resolver o endereço MAC.
+Os pacotes ARP contêm endereços MAC e endereços IP. O endereço MAC de origem num pacote ARP é o endereço MAC do dispositivo que enviou o pacote, enquanto o endereço MAC de destino é o endereço de broadcast para a rede. O endereço IP de origem num pacote ARP é o endereço IP do dispositivo que enviou o pacote, enquanto o endereço IP de destino é o endereço IP do dispositivo para o qual o remetente está a tentar resolver o endereço MAC.
 
 ->  What packets does the ping command generate?
-ICMP echo request
+ICMP echo request 
 ICMP echo reply
-Quando um dispositivo envia um ICMP echo request packet para o dispositivo de destino este envia um ICMP echo reply para indicar
-que o pedido foi recebido.
+Quando um dispositivo envia um ICMP echo request packet para o dispositivo de destino este envia um ICMP echo reply para indicar que o pedido foi recebido.
 
 ->  What are the MAC and IP addresses of the ping packets?
-Os pacotes de ping não possuem endereços MAC específicos, porque são enviados através da camada de rede usando endereço IP de
-destino. 
+Os pacotes de ping não possuem endereços MAC específicos, porque são enviados através da camada de rede usando endereço IP de destino. Se o endereço MAC de destino não estiver na tabela ARP o remetente enviará uma solicitação ARP para o endereço IP de destino a fim de obter o endereço MAC correspondente.
+
+-> How to determine if a receiving Ethernet frame is ARP, IP, ICMP?
+Os pacotes de Ethernet têm um campo no cabeçalho (EtherType) que remete para o tipo de pacote, no caso desse campo ser 0x0806 então o payload é do tipo ARP, no caso de ser 0x0800 então estamos perante um payload do tipo IP e no caso de ICMP o número de protocolo presente no campo "Protocol" no cabeçalho do IPv4 deve ser igual a 1.
+
+->  How to determine the length of a receiving frame?
+O cabeçalho tem um campo chamado Length/Type que especifica o tamanho do pacote incluindo o cabeçalho e o payload.
+
+->  What is the loopback interface and why is it important?
+A interface loopback é uma interface de rede virtual que é usada pelo sistema operativo para enviar e receber tráfego internamente dentro do mesmo dispositivo. A interface de loopback é importante porque fornece um mecanismo para testar aplicações e serviços de rede sem exigir uma conexão de rede física. Esta interface permite que o dispositivo comunique consigo mesmo como se estivesse a comunicar por uma rede, o que pode resolver problemas que dependem de comunicação em rede.
+
+
+//Part_2 / Exp_2
+

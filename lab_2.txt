@@ -26,3 +26,5 @@ A interface loopback é uma interface de rede virtual que é usada pelo sistema 
 
 //Part_2 / Exp_2
 
+->  How to configure bridgeY0?
+Primeiro damos reset ao switch. seguidamente adicionamos a bridge40 ($/interface bridge add name=bridge40), removemos as portas ethernet ligadas à bridge default ($/interface bridge port remove [find interface =ether1]) e ligamos as portas ethernet dos computadores 43 e 44 na bridge criada ($/interface bridge port add bridge=bridgeY0 interface=ether1). Por último imprimimos as ligações das portas às bridges para confirmar as ligações. 

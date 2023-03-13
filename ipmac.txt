@@ -1,0 +1,24 @@
+GNU 41
+GNU 42    IP: 172.16.41.1    /24   MAC: 00:22:64:19:02:ba
+GNU 43    IP: 172.16.40.1    /24   MAC: 00:21:5a:61:2f:13
+GNU 44    IP: 172.16.40.254  /24   MAC: 00:21:5a:c3:78:76
+
+
+GNU 42:
+sudo systemctl restart networking
+ifconfig 172.16.41.1/24
+
+GNU 43:
+sudo systemctl restart networking
+ifconfig 172.16.40.1/24
+
+GNU 44:
+sudo systemctl restart networking
+ifocnfig 172.16.40.254/24
+
+SWITCH:
+/interface brigde add name = bridgeY[i]                             //Creating a bridge
+/interface bridge remove bridgeY[i]                                 //Removing a bridge
+/interface bridge port add bridge = bridgeY[i] interface=ether[j]   //Add a port to a bridge
+/interface bridge port remove [find interface = ether[j]]           //Remove a port from a bridge
+/interface bridge port print brief                                  //Show bridges and ports 

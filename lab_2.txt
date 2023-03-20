@@ -31,3 +31,46 @@ Primeiro damos reset ao switch. seguidamente adicionamos a bridge40 ($/interface
 
 ->  How many broadcast domains are there? How can you conclude it from the logs?
 Há 2 broadcast domains que são os dois computadores que estão ligados à mesma bridge do switch. Embora tenhamos 3 computadores ligados ao switch como apenas dois computadores estão ligados por uma bridge. Na captura do Wireshark quando fazemos um ping de broadcast apenas obtemos reply do computador que está ligado à mesma brigde do computador que faz broadcast, daí podemos concluir que apenas temos 2 broadcast domains.
+
+
+//Parte_2 / Exp_3
+
+->  What routes are there in the tuxes? What are their meaning?
+No computador GNU43 quando queremos aceder à subnetwork 172.16.41.0 usamos o computador GNU44 como gateway entre as duas brigdes. No caso de querer aceder do computador GNU42 à subnetwork 172.16.40.0 usamos também o computador GNU44 que está ligado às duas bridges e funciona como gateway em ambos os sentidos.
+
+->  What information does an entry of the forwarding table contain? 
+
+
+->  What ARP messages, and associated MAC addresses, are observed and why?
+Quando tentamos executar o comando ping do computador GNU42 para o computador GNU43 usando o GNU44 como router podemos observar uma série de mensagens ARP. Primeiro o GNU43 vai obter o endereço MAC do router, de seguida o router vai obter o endereço MAC do GNU42 e vice versa e por fim o router obtém o endereço MAC do GNU43. Desta maneira o comando ping executado no computador GNU43 chega ao GNU42 e regressa.
+
+->  What ICMP packets are observed and why? 
+São observados pacotes ICMP Request e ICMP Reply no GNU44 (router) porque o computador redireciona as mensagens ping de modo a chegarem ao destino.
+
+->  What are the IP and MAC addresses associated to ICMP packets and why?
+Os endereços IP e MAC associados aos pacotes ICMP são correspondentes ao emissor e ao recetor, porque o router não muda a estrutura dos pacotes ICMP.
+
+
+//Parte_2 / Exp_4
+
+->  How to configure a static route in a commercial router?
+Um router estático pode ser usado para especificar um caminho particular para um determinado destino. Usando um comando específico podemos definir o ip de destino e a respetiva gateway.
+
+->  What are the paths followed by the packets in the experiments carried out and why?
+
+
+->  How to configure NAT in a commercial router?
+Para configurar o NAT é preciso usar o seguinte comando:
+  /ip firewall nat add chain = srcnat action = masquerade out - interface = ether1
+ 
+-> What does NAT do?
+NAT (Network Address Translation) é um método usado pelos routers para permitir que dispositivos em redes privadas acedam à internet usando apenas um endereço IP publico. O uso do NAT ajuda a manter um número limitado de endereços IP disponíveis e permite que dispositivos numa rede privada comuniquem com dispositivos na internet sem ser preciso um único e público endereço IP routeável para cada dispositivo.
+
+
+//Parte_2 / Exp_4
+
+->  How to configure the DNS service at an host?
+Para configurar um serviço de DNS é necessário aceder ao ficheiro /etc/resolv/conf e adicionar o endereço IP e nome do servidor.
+
+->What packets are exchanged by DNS and what information is transported?
+DNS é uma rede de servidores que traduz nomes fácilmente memorizáveis por humanos para endereços IP que os computadoes possam interpretar. Os pacotes trocados pelo DNS são mensagens query e reply. A mensagem tem um cabeçalho que inclui identificação, flags, o número de perguntas e as gravações de recursos. A query contém o domain name que está a ser consultado a reply contém as respostas ao que é perguntado pela query com informações adicionais como o endereço IP do servidor. 

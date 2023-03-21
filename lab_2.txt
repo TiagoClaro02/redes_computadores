@@ -74,3 +74,10 @@ Para configurar um serviço de DNS é necessário aceder ao ficheiro /etc/resolv
 
 ->What packets are exchanged by DNS and what information is transported?
 DNS é uma rede de servidores que traduz nomes fácilmente memorizáveis por humanos para endereços IP que os computadoes possam interpretar. Os pacotes trocados pelo DNS são mensagens query e reply. A mensagem tem um cabeçalho que inclui identificação, flags, o número de perguntas e as gravações de recursos. A query contém o domain name que está a ser consultado a reply contém as respostas ao que é perguntado pela query com informações adicionais como o endereço IP do servidor. 
+
+//Parte_2 / Exp_5
+
+->  How to configure the DNS service at an host?
+Alterar o ficheiro resolv.conf adicionando o nome do servidor e o respetivo endereço IP.
+
+->  What packets are exchanged by DNS and what information is transported?

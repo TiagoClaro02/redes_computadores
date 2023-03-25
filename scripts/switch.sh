@@ -1,3 +1,5 @@
+/system reset-configuration
+y
 /interface bridge add name=bridge40
 /interface bridge add name=bridge41
 /interface bridge port remove [find interface=ehter2]
